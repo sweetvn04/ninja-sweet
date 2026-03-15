@@ -1,0 +1,50 @@
+services:
+  njswdb:
+    build: ./database
+    image: sweetvn/njswdb:v1
+    container_name: njswdb
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: nsoz
+      MYSQL_USER: sweetvn
+      MYSQL_PASSWORD: baovip123
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database-data:/var/lib/mysql
+    networks:
+      - njsw-network
+    restart: unless-stopped
+
+  njswdb-pma:
+    image: phpmyadmin:latest
+    container_name: njswdb-pma
+    environment:
+      PMA_HOST: njswdb
+      PMA_ARBITRARY: "1"
+      UPLOAD_LIMIT: 30M
+    ports:
+      - "8081:80"
+    depends_on:
+      - njswdb
+    networks:
+      - njsw-network
+    restart: unless-stopped
+
+  njsw-server:
+    build: ./game-server
+    image: sweetvn/njsw-server:v1
+    container_name: njsw-server
+    depends_on:
+      - njswdb
+    volumes:
+      - ./game-data:/app/nso_data
+    ports:
+      - "14444:14444"
+    networks:
+      - njsw-network
+    restart: unless-stopped
+
+networks:
+  njsw-network:
+    external: false

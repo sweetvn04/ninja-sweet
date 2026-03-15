@@ -1,0 +1,28 @@
+# IDE
+.idea/
+.vscode/
+/*.iml
+*.DS_Store
+*.DS_Store?
+
+# Maven
+target/
+build/
+*.class
+
+# Binaries
+*.jar
+*.war
+*.ear
+
+# Logs
+logs/
+*.log
+
+# Project specific
+nb-configuration.xml
+nbactions.xml
+.project
+.classpath
+database-data/
+zzz/logs/

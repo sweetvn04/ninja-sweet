@@ -14,12 +14,12 @@ Ninja Sweet is a unified, Dockerized game server project. This repository contai
 
 - `game-server/`: Java source code and Dockerfile (Maven multi-stage build).
 - `database/`: MariaDB setup with automatic SQL initialization.
-- `zzz/`: Persistent configuration and game data.
+- `game-data/`: Persistent configuration and static game resources.
 - `database-data/`: (Generated) Persistent database storage.
 
 ## ⚙️ Configuration
 
-Edit `zzz/config.properties` to change server settings such as IP, ports, and game rates.
+Edit `game-data/config.properties` to change server settings such as IP, ports, and game rates.
 
 ## 🛠️ Development
 

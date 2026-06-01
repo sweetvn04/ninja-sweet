@@ -47,4 +47,4 @@ services:
 
 networks:
   njsw-network:
-    external: false
+    external: true
